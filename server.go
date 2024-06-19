@@ -106,6 +106,7 @@ var neblina = Elemento{
 }
 var ultimoElementoSobPersonagem = vazio
 
+
 func (server *Server) RegisterClient(args *RegisterArgs, response *RegisterResponse) error {
     server.mutex.Lock()
     defer server.mutex.Unlock()
