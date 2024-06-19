@@ -1,16 +1,24 @@
-.PHONY: all build
+.PHONY: all build clean distclean run-server run-client
 
 all: build
 
 go.mod:
-	go mod init jogo
-	go get -u github.com/nsf/termbox-go
+	go mod init server
+	go mod tidy
 
 build: go.mod
-	go build jogo.go
-	
+	go mod tidy
+	go build -o server server.go
+	go build -o client client.go
+
 clean:
-	rm -f jogo
+	rm -f server client
 
 distclean: clean
 	rm -f go.mod go.sum
+
+run-server:
+	go run server.go
+
+run-client:
+	go run client.go 127.0.0.1 joguinho
